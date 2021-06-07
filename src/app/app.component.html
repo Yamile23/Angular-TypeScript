@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-dark bg-success">
+  <a class="navbar-brand mx-3" href="/">
+    Angular Simple CRUD
+  </a>
+</nav>
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <img
+        width="300"
+        alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+      />
+      </div>
+      <div class="col-md-8 mt-4">
+        <ul class="list-group">
+          <li *ngFor="let person of personaArray" class="list-group-item mt-1 list-group-item-action"
+          (click)="editar(person)"
+          [class.active]="person==selectedPersona">
+           <span class="badge badge-primary bg-danger me-3">{{ person.id }}
+
+           </span> 
+           
+            {{person.name}} - {{person.country}}
+           
+          </li>
+
+        </ul>
+        <div class="card mt-4">
+          <div class="card-body bg-dark text-white">
+            <div class="card-tile ">
+              Insert A new Person   
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedPersona.name" placeholder="Insertar Nombre" class="form-control mt-1">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedPersona.country" placeholder="Insertar Country" class="form-control mt-1">
+            </div>
+            
+            <input type="button" (click)="agregar()" value="Submit" class="btn btn-primary mt-4">
+            <input *ngIf="selectedPersona.id !== 0" type="button" (click)="eliminar()" value="Delete" class="btn btn-danger mt-4 mx-2">
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
